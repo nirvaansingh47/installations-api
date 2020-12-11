@@ -8,3 +8,9 @@ class InstallationSerializer(serializers.ModelSerializer):
         model = Installation
         fields = '__all__'
 
+
+class StatusSerializer(serializers.Serializer):
+    installation = serializers.UUIDField()
+    status = serializers.CharField()
+    notes = serializers.CharField()
+    date = serializers.DateTimeField()
