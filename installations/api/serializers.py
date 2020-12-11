@@ -27,3 +27,9 @@ class StatusSerializer(serializers.Serializer):
     status = serializers.CharField()
     notes = serializers.CharField()
     date = serializers.DateTimeField()
+
+
+class StatusListSerializer(serializers.Serializer):
+    status = serializers.CharField()
+    notes = serializers.CharField()
+    date = serializers.DateTimeField()

@@ -1,12 +1,13 @@
 from datetime import datetime
 
-from rest_framework import status, mixins, viewsets, filters
+from rest_framework import status, viewsets, filters
 from rest_framework.decorators import action
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
 from installations.api.models import Installation
-from installations.api.serializers import InstallationSerializer, StatusSerializer, InstallationReadSerializer
+from installations.api.serializers import InstallationSerializer, StatusSerializer, InstallationReadSerializer, \
+    StatusListSerializer
 
 
 class CreateUpdateInstallationView(APIView):
@@ -50,6 +51,6 @@ class ListRetrieveInstallationView(viewsets.ReadOnlyModelViewSet):
     @action(detail=True, methods=['GET'])
     def history(self, request, pk):
         obj = self.get_object()
-        history = StatusSerializer(obj.get_history(), many=True)
+        history = StatusListSerializer(obj.get_history(), many=True)
 
         return Response(data=history.data, status=status.HTTP_200_OK)
