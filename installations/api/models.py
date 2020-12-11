@@ -10,6 +10,11 @@ class Installation(models.Model):
     date_created = models.DateTimeField(auto_now_add=True)
     date_modified = models.DateTimeField(auto_now=True)
 
+    def latest_status(self):
+        return self.statuses.order_by('-date').first().status
+
+    def get_history(self):
+        return self.statuses.order_by('-date')
 
 class InstallationStatus(models.Model):
     INSTALLATION_STATUS_CHOICES = (

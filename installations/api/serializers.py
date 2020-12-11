@@ -9,6 +9,19 @@ class InstallationSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
+class InstallationReadSerializer(serializers.ModelSerializer):
+    class Meta:
+        model = Installation
+        fields = (
+            'id',
+            'customer_name',
+            'appointment_date',
+            'date_created',
+            'date_modified',
+            'latest_status'
+        )
+
+
 class StatusSerializer(serializers.Serializer):
     installation = serializers.UUIDField()
     status = serializers.CharField()
