@@ -26,7 +26,6 @@ class StatusSerializer(serializers.Serializer):
     installation = serializers.UUIDField()
     status = serializers.CharField()
     notes = serializers.CharField()
-    date = serializers.DateTimeField()
 
 
 class StatusListSerializer(serializers.Serializer):

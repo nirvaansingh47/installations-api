@@ -6,3 +6,4 @@ django-rest-swagger
 gunicorn
 gevent
 whitenoise
+django-filter

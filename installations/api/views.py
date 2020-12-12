@@ -1,5 +1,6 @@
 from datetime import datetime
 
+from django_filters.rest_framework import DjangoFilterBackend
 from rest_framework import status, viewsets, filters
 from rest_framework.decorators import action
 from rest_framework.response import Response
@@ -35,6 +36,7 @@ class CreateUpdateInstallationView(APIView):
                 date=serializer.validated_data.get('date'),
             )
             installation.date_modified = datetime.now()
+            installation.latest_status = serializer.validated_data.get('status')
             installation.save()
 
             return Response(status=status.HTTP_200_OK)
@@ -45,8 +47,9 @@ class CreateUpdateInstallationView(APIView):
 class ListRetrieveInstallationView(viewsets.ReadOnlyModelViewSet):
     queryset = Installation.objects.order_by('-date_modified')
     serializer_class = InstallationReadSerializer
-    filter_backends = [filters.OrderingFilter]
+    filter_backends = [filters.OrderingFilter, DjangoFilterBackend]
     ordering_fields = ['appointment_date', 'date_modified']
+    filterset_fields = ['latest_status']
 
     @action(detail=True, methods=['GET'])
     def history(self, request, pk):

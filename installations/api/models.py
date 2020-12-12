@@ -9,12 +9,11 @@ class Installation(models.Model):
     appointment_date = models.DateTimeField()
     date_created = models.DateTimeField(auto_now_add=True)
     date_modified = models.DateTimeField(auto_now=True)
-
-    def latest_status(self):
-        return self.statuses.order_by('-date').first().status
+    latest_status = models.CharField(max_length=32, default='installation_request')
 
     def get_history(self):
         return self.statuses.order_by('-date')
+
 
 class InstallationStatus(models.Model):
     INSTALLATION_STATUS_CHOICES = (
