@@ -1,0 +1,23 @@
+version: '3'
+
+services:
+  web:
+    build: .
+    container_name: installations-api-test
+    volumes:
+      - .:/code
+      - ./static:/code/static
+    ports:
+      - "8000:8000"
+    entrypoint: ["sh", "/code/entrypoint.test.sh"]
+    environment:
+      - DJANGO_DEBUG=TRUE
+      - ALLOWED_HOSTS=localhost
+      - POSTGRES_DB=postgres
+      - POSTGRES_USER=postgres
+      - POSTGRES_HOST=installations-db
+      - POSTGRES_PORT=5432
+      - POSTGRES_PASSWORD=Pass123#
+      - WORKER_COUNT=3
+      - WORKER_CONNECTIONS=500
+      - WORKER_TIMEOUT=60

@@ -7,3 +7,5 @@ gunicorn
 gevent
 whitenoise
 django-filter
+django-nose
+coverage

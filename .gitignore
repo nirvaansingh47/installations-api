@@ -3,3 +3,6 @@ db-data
 **/__pycache__/**
 static
 db.sqlite3
+cover
+.pytest_cache
+.coverage
