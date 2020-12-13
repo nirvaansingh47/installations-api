@@ -13,7 +13,7 @@ SECRET_KEY = 'm^qie&!h(q52%xx)z2n_&6v70onem*we0$65su0+lm6cwvg3mz'
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = ['localhost', 'vuma-api.jpmeyer.dev']
+ALLOWED_HOSTS = ['localhost', 'vuma-api.jpmeyer.dev', '68.183.126.38']
 
 # Application definition
 
